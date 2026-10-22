@@ -3,11 +3,11 @@ const CONFIG = {
   SIE: "[IHR NAME]",
   ICH: "[DEIN NAME]",
   /* E-Mail-Versand über Web3Forms: Access Key von web3forms.com (siehe README). Die Mail geht an die Adresse, mit der du den Key erstellt hast. */
-  WEB3FORMS_KEY: "836b6452-38a1-4e81-9689-a315d1bfb4ca836b6452-38a1-4e81-9689-a315d1bfb4ca",
-  /* Optional zusätzlich als Push aufs Handy (ntfy-App). Leer lassen = aus. */
+  WEB3FORMS_KEY: "836b6452-38a1-4e81-9689-a315d1bfb4ca",
+  /* Optional zusätzlich als Push aufsy (ntfy-App). Leer lassen = aus. */
   NTFY_TOPIC: "",
   /* Optional: Fallback, falls das Senden scheitert. Format: 491701234567 (ohne + und Leerzeichen) */
-  WHATSAPP: "--"
+  WHATSAPP: ""
 };
 const MENU = {
   vor:   {title:"Vorspeise (der Anfang)",  opts:["☕ Kaffee","🍦 Eis","🌭 Streetfood","🚶 Spaziergang"]},
@@ -120,11 +120,11 @@ $("#send").onclick=async()=>{
   try{
     if(!jobs.length)throw new Error("Kein Versandweg konfiguriert");
     const res=await Promise.allSettled(jobs);
-    if(!res.some(x=>x.status==="fulfilled"))throw res[0].reason;
+    console.log("Versand-Ergebnis:",res);if(!res.some(x=>x.status==="fulfilled"))throw res[0].reason;
     confetti();show("done");
   }catch(e){
     btn.disabled=false;btn.textContent="Nochmal versuchen";
-    err.textContent="Die Bestellung ist leider nicht angekommen. Bitte nochmal tippen.";
+    console.error("Senden fehlgeschlagen:",e);err.textContent="Die Bestellung ist leider nicht angekommen. Bitte nochmal tippen. (Grund: "+((e&&e.message)||e)+")";
     if(CONFIG.WHATSAPP){const a=document.createElement("a");a.href="https://wa.me/"+CONFIG.WHATSAPP+"?text="+encodeURIComponent(text);a.textContent=" Oder direkt per WhatsApp schicken.";a.style.color="#fff";err.appendChild(a)}
   }
 };
