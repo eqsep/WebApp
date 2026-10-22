@@ -2,8 +2,10 @@
 const CONFIG = {
   SIE: "[IHR NAME]",
   ICH: "[DEIN NAME]",
-  /* Ein langes, zufälliges Wort, das nur du kennst. Dieses Topic abonnierst du in der ntfy-App. */
-  NTFY_TOPIC: "date-menue-AENDERE-MICH-x7k2p9q4",
+  /* E-Mail-Versand über Web3Forms: Access Key von web3forms.com (siehe README). Die Mail geht an die Adresse, mit der du den Key erstellt hast. */
+  WEB3FORMS_KEY: "836b6452-38a1-4e81-9689-a315d1bfb4ca836b6452-38a1-4e81-9689-a315d1bfb4ca",
+  /* Optional zusätzlich als Push aufs Handy (ntfy-App). Leer lassen = aus. */
+  NTFY_TOPIC: "",
   /* Optional: Fallback, falls das Senden scheitert. Format: 491701234567 (ohne + und Leerzeichen) */
   WHATSAPP: ""
 };
@@ -104,9 +106,21 @@ $("#send").onclick=async()=>{
   const btn=$("#send"),err=$("#senderr");btn.disabled=true;btn.textContent="Wird serviert …";err.innerHTML="";
   const wish=$("#wish").value.trim();
   const text=CONFIG.SIE+" hat bestellt:\nVorspeise: "+pick.vor+"\nHauptgang: "+pick.haupt+"\nDessert: "+pick.dess+"\nWann: "+when()+(wish?"\nSonderwunsch: "+wish:"");
+  const jobs=[];
+  if(CONFIG.WEB3FORMS_KEY&&!CONFIG.WEB3FORMS_KEY.startsWith("HIER")){
+    jobs.push(fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},
+      body:JSON.stringify({access_key:CONFIG.WEB3FORMS_KEY,subject:"Date-Bestellung von "+CONFIG.SIE,from_name:CONFIG.SIE,
+        Vorspeise:pick.vor,Hauptgang:pick.haupt,Dessert:pick.dess,Termin:when(),Sonderwunsch:wish||"-"})
+    }).then(async r=>{const j=await r.json();if(!r.ok||!j.success)throw new Error(j.message||r.status)}));
+  }
+  if(CONFIG.NTFY_TOPIC){
+    jobs.push(fetch("https://ntfy.sh/"+encodeURIComponent(CONFIG.NTFY_TOPIC),{method:"POST",body:text,headers:{Title:"Date-Bestellung eingegangen",Tags:"heart",Priority:"high"}})
+      .then(r=>{if(!r.ok)throw new Error(r.status)}));
+  }
   try{
-    const r=await fetch("https://ntfy.sh/"+encodeURIComponent(CONFIG.NTFY_TOPIC),{method:"POST",body:text,headers:{Title:"Date-Bestellung eingegangen",Tags:"heart",Priority:"high"}});
-    if(!r.ok)throw new Error(r.status);
+    if(!jobs.length)throw new Error("Kein Versandweg konfiguriert");
+    const res=await Promise.allSettled(jobs);
+    if(!res.some(x=>x.status==="fulfilled"))throw res[0].reason;
     confetti();show("done");
   }catch(e){
     btn.disabled=false;btn.textContent="Nochmal versuchen";

@@ -8,6 +8,12 @@ Kleine statische Website (HTML, CSS, JavaScript), gehostet über GitHub Pages.
 - `script.js` – Logik und Einstellungen (Namen, Menü, ntfy-Topic ganz oben)
 - `.nojekyll` – sagt GitHub Pages, die Dateien unverändert auszuliefern
 
+## Automatische Mail einrichten (Web3Forms)
+1. Auf https://web3forms.com die eigene E-Mail-Adresse eintragen und "Create Access Key" klicken.
+2. Den Key aus der Bestätigungsmail kopieren und in `script.js` bei `WEB3FORMS_KEY` einfügen.
+3. Der Key darf öffentlich im Code stehen, er kann nur Mails an deine Adresse auslösen.
+4. Optional: `NTFY_TOPIC` füllen, dann kommt zusätzlich eine Push-Nachricht aufs Handy.
+
 ## Lokal testen
 In VS Code die Erweiterung "Live Server" installieren, dann Rechtsklick auf `index.html` → "Open with Live Server".
 
