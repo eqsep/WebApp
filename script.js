@@ -7,7 +7,7 @@ const CONFIG = {
   /* Optional zusätzlich als Push aufs Handy (ntfy-App). Leer lassen = aus. */
   NTFY_TOPIC: "",
   /* Optional: Fallback, falls das Senden scheitert. Format: 491701234567 (ohne + und Leerzeichen) */
-  WHATSAPP: "49151402291775"
+  WHATSAPP: "--"
 };
 const MENU = {
   vor:   {title:"Vorspeise (der Anfang)",  opts:["☕ Kaffee","🍦 Eis","🌭 Streetfood","🚶 Spaziergang"]},
