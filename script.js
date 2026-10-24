@@ -1,7 +1,7 @@
 /* ===== HIER ANPASSEN ===== */
 const CONFIG = {
   SIE: "Gast",
-  ICH: "Peters",
+  ICH: "Peter",
   /* E-Mail-Versand über Web3Forms: Access Key von web3forms.com (siehe README). Die Mail geht an die Adresse, mit der du den Key erstellt hast. */
   WEB3FORMS_KEY: "836b6452-38a1-4e81-9689-a315d1bfb4ca",
   /* Optional zusätzlich als Push aufs Handy (ntfy-App). Leer lassen = aus. */
