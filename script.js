@@ -1,7 +1,7 @@
 /* ===== HIER ANPASSEN ===== */
 const CONFIG = {
   SIE: "Gast",
-  ICH: "Peter",
+  ICH: "Peters",
   /* E-Mail-Versand über Web3Forms: Access Key von web3forms.com (siehe README). Die Mail geht an die Adresse, mit der du den Key erstellt hast. */
   WEB3FORMS_KEY: "836b6452-38a1-4e81-9689-a315d1bfb4ca",
   /* Optional zusätzlich als Push aufs Handy (ntfy-App). Leer lassen = aus. */
@@ -11,7 +11,7 @@ const CONFIG = {
 };
 const MENU = {
   vor:   {title:"Vorspeise (der Anfang)",  opts:["☕ Kaffee","🍦 Eis","🌭 Streetfood","🚶 Spaziergang"]},
-  haupt: {title:"Hauptgang (der Plan)",    opts:["🎬 Kino","⛳ Minigolf","🎳 Bowling","🧺 Picknick","🎲 Brettspielcafé"]},
+  haupt: {title:"Hauptgang (der Plan)",    opts:["🎬 Kino","⛳ Minigolf","🎳 Bowling","🧺 Picknick","🎲 Brettspiele", "🍻 Bar"]},
   dess:  {title:"Dessert (der Abschluss)", opts:["🍸 Cocktail","🌇 Sonnenuntergang","🛋️ Film bei mir","🥙 Döner um 23 Uhr"]}
 };
 const NO_TEXTS = ["Nein","Bist du sicher?","Wirklich?","Überleg nochmal","Es gibt Snacks","Ich hab auch Charme","Der Button hat Angst","Komm schon","Letzte Chance","Okay, ich geb auf"];
