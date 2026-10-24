@@ -34,12 +34,10 @@ document.title = "Eine Frage an " + CONFIG.SIE;
 
 function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id===id));window.scrollTo(0,0)}
 
-/* Eigene Rad-Optionen merken (falls Speicher verfügbar) */
-try{const x=JSON.parse(localStorage.getItem("dm_own")||"[]");if(Array.isArray(x))MENU.haupt.opts.push(...x.filter(o=>!MENU.haupt.opts.includes(o)))}catch(e){}
 
 /* ---- Konfetti ---- */
 function confetti(){
-  const set=["🎉","💖","✨","🍕","🥳","🍦"];
+  const set=["🎉","💖","✨","😺","🥳","🍻"];
   for(let i=0;i<40;i++){
     const s=document.createElement("span");s.className="conf";s.textContent=set[i%set.length];
     s.style.left=Math.random()*100+"vw";s.style.animationDuration=2.4+Math.random()*2+"s";s.style.animationDelay=Math.random()*.8+"s";
@@ -106,8 +104,8 @@ function when(){
 function buildBill(){
   const rows=[["Vorspeise",pick.vor],["Hauptgang",pick.haupt],["Dessert",pick.dess],["Termin",when()]];
   const wish=$("#wish").value.trim();if(wish)rows.push(["Sonderwunsch",wish]);
-  $("#bill").innerHTML="<h2>Chez "+esc(CONFIG.ICH)+"</h2>"+rows.map(r=>"<div><span>"+r[0]+"</span><span>"+esc(r[1])+"</span></div>").join("")+
-    "<div><span>Trinkgeld</span><span>ein Lächeln reicht</span></div><div class='tot'><span>Gesamt</span><span>unbezahlbar</span></div>";
+  $("#bill").innerHTML="<h2>Bistro "+esc(CONFIG.ICH)+"</h2>"+rows.map(r=>"<div><span>"+r[0]+"</span><span>"+esc(r[1])+"</span></div>").join("")+
+    "<div><span>Trinkgeld</span><span>Wir nehmen auch Komplimente</span></div><div class='tot'><span>Gesamt</span><span>unbezahlbar</span></div>";
 }
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 $("#back").onclick=()=>show("menu");
