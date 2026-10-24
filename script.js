@@ -1,10 +1,10 @@
 /* ===== HIER ANPASSEN ===== */
 const CONFIG = {
-  SIE: "[IHR NAME]",
+  SIE: "Gast",
   ICH: "[DEIN NAME]",
   /* E-Mail-Versand über Web3Forms: Access Key von web3forms.com (siehe README). Die Mail geht an die Adresse, mit der du den Key erstellt hast. */
-  WEB3FORMS_KEY: "836b6452-38a1-4e81-9689-a315d1bfb4ca",
-  /* Optional zusätzlich als Push aufsy (ntfy-App). Leer lassen = aus. */
+  WEB3FORMS_KEY: "HIER-DEINEN-ACCESS-KEY-EINTRAGEN",
+  /* Optional zusätzlich als Push aufs Handy (ntfy-App). Leer lassen = aus. */
   NTFY_TOPIC: "",
   /* Optional: Fallback, falls das Senden scheitert. Format: 491701234567 (ohne + und Leerzeichen) */
   WHATSAPP: ""
@@ -19,6 +19,15 @@ const NO_TEXTS = ["Nein","Bist du sicher?","Wirklich?","Überleg nochmal","Es gi
 
 const $ = s => document.querySelector(s);
 const pick = {vor:null, haupt:null, dess:null};
+/* Name aus dem Link: .../WebApp/Anna (über 404.html) oder .../WebApp/?n=Anna */
+{
+  const q=new URLSearchParams(location.search);
+  let n=(q.get("n")||q.get("name")||"").trim().slice(0,30);
+  if(n){
+    CONFIG.SIE=n.charAt(0).toUpperCase()+n.slice(1);
+    try{history.replaceState(null,"",location.pathname.replace(/[^/]*$/,"")+encodeURIComponent(n))}catch(e){}
+  }
+}
 document.querySelectorAll(".sie").forEach(e => e.textContent = CONFIG.SIE);
 document.querySelectorAll(".ich").forEach(e => e.textContent = CONFIG.ICH);
 document.title = "Eine Frage an " + CONFIG.SIE;

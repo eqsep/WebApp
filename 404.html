@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eine Frage …</title>
+<meta property="og:title" content="Eine Frage …">
+<meta property="og:description" content="Kurze Frage, ernste Sache.">
+<script>
+/* GitHub Pages kennt keine Pfade wie /WebApp/Anna und zeigt dafür diese Seite.
+   Wir leiten auf /WebApp/?n=Anna um, dort liest script.js den Namen aus. */
+var REPO = "WebApp"; /* Name deines Repos */
+var parts = location.pathname.split("/").filter(Boolean);
+var i = parts.indexOf(REPO);
+var name = i >= 0 ? parts[i + 1] : parts[0];
+location.replace("/" + REPO + "/" + (name ? "?n=" + name : ""));
+</script>
+</head>
+<body></body>
+</html>

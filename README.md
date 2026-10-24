@@ -21,3 +21,10 @@ In VS Code die Erweiterung "Live Server" installieren, dann Rechtsklick auf `ind
 1. Änderungen committen und mit `git push` nach GitHub schicken.
 2. Im Repo: Settings → Pages → Source: "Deploy from a branch" → Branch `main`, Ordner `/ (root)` → Save.
 3. Nach ca. 1 Minute ist die Seite unter `https://DEIN-USERNAME.github.io/REPO-NAME/` erreichbar.
+
+## Personalisierte Links
+- `https://eqsep.github.io/WebApp/Anna` zeigt überall "Anna" (leitet über `404.html` auf `?n=Anna` um und stellt die schöne Adresse wieder her).
+- Funktioniert auch direkt: `https://eqsep.github.io/WebApp/?n=Anna`.
+- Ohne Namen erscheint der Fallback aus `CONFIG.SIE` ("Gast").
+- Der Name steht außerdem im Betreff der Bestell-Mail, so siehst du, wer bestellt hat.
+- Wichtig: `404.html` muss im Hauptordner des Repos liegen. `REPO` darin muss genau so heißen wie dein Repo.
