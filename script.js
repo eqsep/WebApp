@@ -10,9 +10,9 @@ const CONFIG = {
   WHATSAPP: ""
 };
 const MENU = {
-  vor:   {title:"Vorspeise (der Anfang)",  opts:["☕ Kaffee","🍦 Eis","🌭 Streetfood","🚶 Spaziergang"]},
-  haupt: {title:"Hauptgang (der Plan)",    opts:["🎬 Kino","⛳ Minigolf","🎳 Bowling","🧺 Picknick","🎲 Brettspiele", "🍻 Bar"]},
-  dess:  {title:"Dessert (der Abschluss)", opts:["🍸 Cocktail","🌇 Sonnenuntergang","🛋️ Film bei mir","🥙 Döner um 23 Uhr"]}
+  vor:   {title:"Vorspeise (der Anfang)",  opts:["☕ Kaffee","🍦 Eis","🌭 Streetfood","🚶 Spaziergang","🏪 Späti-Bier"]},
+  haupt: {title:"Hauptgang (der Plan)",    opts:["🚲 Radtour","🗺️ Planlos durch Leipzig","⛳ Minigolf","🎱 Billard","🧺 Picknick","🎲 Brettspiele", "🍻 Bar","🧑‍🍳 Gemeinsam Kochen"]},
+  dess:  {title:"Dessert (der Abschluss)", opts:["🌇 Sonnenuntergang","🛋️ Film bei mir","🥙 Döner um 23 Uhr","🫖 Tee und tiefgründige Gespräche","🌃 Nachtspaziergang","🍸 Cocktail"]}
 };
 const NO_TEXTS = ["Nein","Bist du sicher?","Wirklich?","Überleg nochmal","Es gibt Snacks","Ich hab auch Charme","Der Button hat Angst","Komm schon","Letzte Chance","Okay, ich geb auf"];
 /* ========================= */
@@ -37,7 +37,7 @@ function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.to
 
 /* ---- Konfetti ---- */
 function confetti(){
-  const set=["🎉","💖","✨","😺","🥳","🍻"];
+  const set=["💃🏻","💖","✨","😺","🍾","🍻"];
   for(let i=0;i<40;i++){
     const s=document.createElement("span");s.className="conf";s.textContent=set[i%set.length];
     s.style.left=Math.random()*100+"vw";s.style.animationDuration=2.4+Math.random()*2+"s";s.style.animationDelay=Math.random()*.8+"s";
