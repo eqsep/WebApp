@@ -10,9 +10,9 @@ const CONFIG = {
   WHATSAPP: ""
 };
 const MENU = {
-  vor:   {title:"Vorspeise (der Anfang)",  opts:["☕ Kaffee","🍦 Eis","🌭 Streetfood","🚶 Spaziergang","🏪 Späti-Bier"]},
-  haupt: {title:"Hauptgang (der Plan)",    opts:["🚲 Radtour","🗺️ Planlos durch Leipzig","⛳ Minigolf","🎱 Billard","🧺 Picknick","🎲 Brettspiele", "🍻 Bar","🧑‍🍳 Gemeinsam Kochen"]},
-  dess:  {title:"Dessert (der Abschluss)", opts:["🌇 Sonnenuntergang","🛋️ Film bei mir","🥙 Döner um 23 Uhr","🫖 Tee und tiefgründige Gespräche","🌃 Nachtspaziergang","🍸 Cocktail"]}
+  vor:   {title:"Vorspeise (der Anfang)",  opts:["☕ Kaffee","🍦 Eis","🌭 Streetfood","🚶 Spaziergang","🏪 Späti-Bier","🍴 Mensa"]},
+  haupt: {title:"Hauptgang (der Plan)",    opts:["🚲 Radtour","🗺️ Planlos durch Leipzig","⛳ Minigolf","🧥 Secondhand-Läden","🎱 Billard","🧺 Picknick","🧠 Pubquiz","🎲 Brettspiele", "🍻 Bar","🧑‍🍳 Gemeinsam Kochen"]},
+  dess:  {title:"Dessert (der Abschluss)", opts:["🌇 Sonnenuntergang","🛋️ Film bei mir","🌌 Sterne beobachten","🥙 Döner um 23 Uhr","🫖 Tee und gute Gespräche","🌃 Nachtspaziergang","🍸 Cocktail","🍕 Tiefkühlpizza bei mir"]}
 };
 const NO_TEXTS = ["Nein","Bist du sicher?","Wirklich?","Überleg nochmal","Es gibt Snacks","Ich hab auch Charme","Der Button hat Angst","Komm schon","Letzte Chance","Okay, ich geb auf"];
 /* ========================= */
